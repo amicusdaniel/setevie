@@ -1,16 +1,116 @@
-<!DOCTYPE html> <!--Указание браузеру, какой стандарт HTML использовать (сейчас HTML 5 по умолчанию)-->
-<html lang="ru"> <!--Начало html-блока. Можно указать язык, чтобы избежать ошибок отображения текста-->
+<!DOCTYPE html>
+<html>
 
-<!-- секция head, как правило, используется для описания служебной и мета информации,
-    в ней также можно указывать ссылки на нужные странице ресурсы, например, шрифты, скрипты и т.д.-->
 <head>
-  <meta charset="UTF-8">             <!--указание кодировки символов-->
-  <title>Моя первая страница</title> <!--Заголовок страницы, который будет отображен во вкладке браузера-->
+  <title>Калькулятор</title>
+    <style>
+       /* опишем базовый стиль кнопки калькулятора */
+.my-btn {
+  margin-right: 5px;           /* задаем отступ от кнопки справа */
+  margin-top: 5px;             /* задаем отступ от кнопки сверху*/
+  width: 50px;                 /* задаем ширину кнопки */
+  height: 50px;                /* задаем высоту кнопки */
+  border-radius: 50%;          /* округляем кнопку */
+  border: none;                /* отключаем обводку */
+  background: #515151;         /* задаем серый цвет кнопки */
+  color: white;                /* задаем белый цвет текста внутри кнопки */
+  font-size: 1.5rem;           /* увеличим размер шрифта */
+  font-family: Arial, Helvetica, sans-serif; /* сменим шрифт */
+  cursor: pointer;             /* при наведении на кнопку курсор будет изменен
+                                  со стрелки на 'указательный палец' */
+  user-select: none;           /* отключаем возможность выделить текст внутри кнопки */
+}
+
+/* hover - это состояние элемента, когда на него наведен курсор */
+.my-btn:hover {
+  background: green;
+}
+
+/* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
+.my-btn:active {
+  filter: brightness(130%); /* увеличим интенсивность цвета для эффекта вспышки */
+}
+
+/* селектор для кнопок первостепенных операций */
+.my-btn.primary {
+  background: #ff9801; /* цвет кнопки оранжевый */
+}
+.my-btn.primary:hover {
+  background: green;
+}
+/* селектор для кнопок второстепенных операций */
+.my-btn.secondary {
+  background: #a6a6a6; /* цвет кнопки сервый */
+}
+.my-btn.secondary:hover {
+  background: green;
+}
+/* селектор для кнопки расчета выражения (=) */
+.my-btn.execute {
+  width: 100px;          /* сделаем кнопку шире других */
+  border-radius: 34px;   /* подкорректируем округлость */
+}
+
+/* селектор для поля вывода результата */
+.result {
+  width: 220px;
+  height: 50px;
+  margin-bottom: 15px;         /* отступ снизу */
+  padding-right: 10px;         /* выступ справа */
+  background: rgb(73, 73, 73); /* цвет можно задавать и таким образом */
+  text-align: right;           /* примагнитим текст к правой стороне */
+  color: #ffffff;              /* цвет текста белый */
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+  </style>
 </head>
 
-<!--секция body - это тело документа. Здесь размещается вся информация, которая будет показана на странице-->
 <body>
-    <h2>Lorem Ipsum</h2>
-</body>
+  <div> <!-- div - это базовый html-контейнер, который может содержать в себе другие html-элементы. -->
 
-</html> <!--конец html-документа -->
+    <!-- блок с экраном калькулятора, где будет выводиться результат вычислений. -->
+    <div id="result" class="result">
+      0
+    </div>
+
+    <!-- блок с кнопками калькулятора. -->
+    <div>
+      <!--горизонтальный ряд из четырех кнопок-->
+      <div>
+        <button id="btn_op_clear " class="my-btn secondary">C</button>    <!-- про тэг кнопки: https://www.w3schools.com/tags/tag_button.asp -->
+        <button id="btn_op_sign" class="my-btn secondary">+/-</button>
+        <button id="btn_op_percent" class="my-btn secondary">%</button>
+        <button id="btn_op_div" class="my-btn primary">/</button>
+      </div>
+
+      <div>
+        <button id="btn_digit_7 " class="my-btn" >7</button>
+        <button id="btn_digit_8 " class="my-btn" >8</button>
+        <button id="btn_digit_9 " class="my-btn" >9</button>
+        <button id="btn_op_mult " class="my-btn primary">x</button>
+      </div>
+
+      <div>
+        <button id="btn_digit_4" class="my-btn">4</button>
+        <button id="btn_digit_5" class="my-btn">5</button>
+        <button id="btn_digit_6" class="my-btn">6</button>
+        <button id="btn_op_minus" class="my-btn primary">-</button>
+      </div>
+
+      <div>
+        <button id="btn_digit_1" class="my-btn">1</button>
+        <button id="btn_digit_2" class="my-btn">2</button>
+        <button id="btn_digit_3" class="my-btn">3</button>
+        <button id="btn_op_plus" class="my-btn primary">+</button>
+      </div>
+
+      <div>
+        <button id="btn_digit_0" class="my-btn">0</button>
+        <button id="btn_digit_dot" class="my-btn">.</button>
+        <button id="btn_op_equal" class="my-btn primary execute">=</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
